@@ -1,0 +1,136 @@
+#!/usr/bin/env bash
+set -e
+
+# This is the master script for the capsule. When you click "Reproducible Run", the code in this file will execute.
+# The previous version of this file was commented-out and follows below:
+#
+# #!/usr/bin/env bash
+# set -e
+# 
+#update-alternatives --config javac
+#update-alternatives --config java
+#javac=/usr/lib/jvm/temurin-21-jdk-amd64/bin/javac
+#java=/usr/lib/jvm/temurin-21-jdk-amd64/bin/java
+
+#In environment java 21 was installed, but it is not set as the default one.
+PATH='/usr/lib/jvm/temurin-21-jdk-amd64/bin/':$PATH
+# $javac -version
+
+cp -v /tmp/pom.xml .
+mvn package
+# 
+
+bold='\033[1m'
+redBold='\033[1;31m'
+normal='\033[0;30m'
+# 
+CSTNUTool='/code/target/CSTNU-Tool-5.0.jar'
+ls -al $CSTNUTool
+# 
+# ### SoftwareX
+echo -e "${bold}------------------------------------------------------------------------"
+echo -e "${redBold}Compilinig the simple class presented in SoftwareX article:${normal}"
+javac -proc:none -cp $CSTNUTool:. SoftwareXExample.java
+echo -e "${redBold}Executing the simple class presented in SoftwareX article:${normal}"
+java -cp $CSTNUTool:. SoftwareXExample
+# ###
+# ### CSTNU 
+echo -e "\n${bold}------------------------------------------------------------------------"
+inputData="../data/18Nodes2Obs5Ctg.cstnu"
+outputData="../results/18Nodes2Obs5Ctg_checked.cstnu"
+echo -e "${redBold}Check the CSTNU $inputData.${normal}"
+java -cp $CSTNUTool \
+     it.univr.di.cstnu.algorithms.CSTNU -o $outputData $inputData
+# ### Possible parameters for a CSTNU run:
+# # file_name                      : file_name must be the input network in
+# #                                  GraphML format (MANDATORY).
+# # -cleaned                       : Output a cleaned result. A result cleaned
+# #                                  network does not contain empty edges or labeled
+# #                                  values containing unknown literals. (default:
+# #                                  true)
+# # -o (--output) output_file_name : Output to this file. If file is already
+# #                                  present, it is overwritten.
+# # -r (--reactionTime) N          : Reaction time. It must be >= 0. (default: 0)
+# # -t (--timeOut) seconds         : Timeout in seconds for the check (default:
+# #                                  2700)
+# # -v (--version)                 : Version (default: false)
+# ###
+# ###
+# ### CSTN
+echo -e "\n${bold}------------------------------------------------------------------------"
+inputData="../data/113Nodes5obs.cstn"
+outputData="../results/113Nodes5obs_checked.cstn"
+echo -e "${redBold}Check the CSTN $inputData.${normal}"
+java -cp $CSTNUTool \
+     it.univr.di.cstnu.algorithms.CSTNPotential -o $outputData $inputData
+# ### Possible parameters for a CSTN run:
+# # file_name                      : file_name must be the input network in
+# #                                  GraphML format (MANDATORY).
+# # -cleaned                       : Output a cleaned result. A result cleaned
+# #                                  network does not contain empty edges or labeled
+# #                                  values containing unknown literals. (default:
+# #                                  true)
+# # -o (--output) output_file_name : Output to this file. If file is already
+# #                                  present, it is overwritten.
+# # -r (--reactionTime) N          : Reaction time. It must be >= 0. (default: 0)
+# # -t (--timeOut) seconds         : Timeout in seconds for the check (default:
+# #                                  2700)
+# # -v (--version)                 : Version (default: false)
+# ###
+# ### Generation of Random STNU instances
+echo -e "\n${bold}------------------------------------------------------------------------"
+echo -e "${redBold}Generate 2 DC and 2 NOT DC STNU instances with 5 contingent link and 100 nodes.${normal}"
+java -cp $CSTNUTool \
+     it.univr.di.cstnu.algorithms.STNURandomGenerator --ctgNodes 5 --dcInstances 2 --nodes 100 \
+             --notDCInstances 2 --laneNetwork --baseOutputDir ../results
+# #Option "--ctgNodes" is required
+# #Usage: java it.univr.di.cstnu.algorithms.STNURandomGenerator [options...]
+# # --baseOutputDir VAL          : Root directory where to create the subdirs
+# #                                containing the DC/notDC instance. (default:
+# #                                Instances)
+# # --ctgNodes N                 : Number of contingent node in each STNU instance.
+# # --dcInstances N              : Number of wanted DC random STNU instances.
+# # --dense                      : Complete the network making it dense. --density
+# #                                parameter says how much. (default: false)
+# # --density N                  : The density of the network. The network is made
+# #                                dense adding edges to it that does not chenge
+# #                                its DC property till a density index is
+# #                                satisfied. (default: 0.5)
+# # --edgeProb N                 : The edge probability between any two nodes in
+# #                                case of general random network.
+# #                                In case of tree random network, it is the
+# #                                probability of edge between nodes of the same
+# #                                level. This is equivalent to the density of the
+# #                                graph. (default: 0.2)
+# # --inDegree N                 : The maximal node indegree. If a node has such
+# #                                indegree, no incoming random edge can be added.
+# #                                (default: 10)
+# # --laneNetwork                : The random network must be a graph like
+# #                                swimming lanes made by sequences of nodes
+# #                                connected by some random edges. It is
+# #                                incompatible with --treeNetwork. (default:
+# #                                false)
+# # --lanes N                    : The number of swimming lanes. (default: 5)
+# # --maxContingentRange N       : Max contingent range between random upper and
+# #                                lower values. (default: 10)
+# # --maxContingentWeightValue N : Max contingent weight value. (default: 20)
+# # --maxWeightValue N           : Max edge weight value (If x is the max weight
+# #                                value, the range for each STNU ordinary link
+# #                                may be [-x, x]). (default: 150)
+# # --nodes N                    : Number of nodes in each STNU instance.
+# # --notDCInstances N           : Number of wanted NOT DC random CSTN instances.
+# # --outDegree N                : The maximal node outdegree. If a node has such
+# #                                outdegree, no outgoing random edge can be
+# #                                added. (default: 10)
+# # --sonProbability N           : The probability that in parent node can have a
+# #                                son. (default: 0.8)
+# # --sons N                     : The maximum number of sons. It must be a value
+# #                                in [1, #nodes]. (default: 2)
+# # --startingIndex N            : Index of the first generated instance.
+# #                                (default: 0)
+# # --treeNetwork                : The random network must be a tree having Z as
+# #                                root. (default: false)
+# # -t (--timeOut) seconds       : Timeout in seconds for the check (default: 900)
+# #
+# #Required options: java -jar CSTNU-*.*.*-SNAPSHOT.jar it.univr.di.cstnu.algorithms.STNURandomGenerator  --ctgNodes N --dcInstances N --nodes N --notDCInstances N
+# 

@@ -1,0 +1,29 @@
+metadata_version: 1
+name: 'Version [5.0]- [CSTNU Tool: A Java Library for Checking Temporal Networks]'
+description: "CSTNU Tool is a Java library for representing and checking different
+  kinds of temporal constraint networks. \nIn particular, CSTNU Tool  offers an optimized
+  implementation of \nsome constraint-propagation algorithms to check the dynamic
+  controllability (DC) of \n'Conditional Simple Temporal Networks (CSTNs)',\n'Conditional
+  Simple Temporal Networks with Uncertainty (CSTNUs)', and\n'Flexible Simple Temporal
+  Networks with Uncertainty (FTNUs)'.\nThe optimization is with respect to the management
+  of labeled values that are present in conditional and flexible networks. \n\nThe
+  library offers also a simple GUI application to build\\slash manage and check temporal
+  networks in an intuitive way, and some Java programs for generating random temporal
+  networks according to some input parameters."
+tags:
+- temporal constraint networks
+- checking algorithms
+- dynamic controllability
+- constraint propagation algorithm
+- CSTN
+- CSTNU
+- FTNU
+- STN
+- STNU
+authors:
+- name: Roberto Posenato
+  affiliations:
+  - name: University of Verona
+corresponding_contributor:
+  name: Roberto Posenato
+  email: roberto.posenato@univr.it
