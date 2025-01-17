@@ -1,0 +1,46 @@
+# Nodes and contingent links saved in random order.
+# KIND OF NETWORK
+STNU
+# Num Time-Points
+16
+# Num Ordinary Edges
+28
+# Num Contingent Links
+5
+# Time-Point Names
+'A1' 'A3' 'A5' 'Z' 'N2' 'C3' 'C1' 'A2' 'N3' 'A4' 'C4' 'N4' 'N1' 'C2' 'C5' 'N5' 
+# Ordinary Edges
+'A3' -25 'N5'
+'C2' -21 'A5'
+'N1' 105 'C3'
+'N4' -41 'C2'
+'A5' -6 'C4'
+'N4' -4 'N3'
+'N2' 67 'C1'
+'C4' 62 'A1'
+'A3' 124 'C5'
+'A4' 59 'A5'
+'N3' 110 'C5'
+'C1' 59 'A5'
+'N5' 134 'A5'
+'C3' -26 'A1'
+'N3' 6 'C1'
+'A4' 37 'A2'
+'C5' 113 'N3'
+'N4' 15 'N1'
+'N3' 133 'A2'
+'C3' 17 'C1'
+'C1' 94 'C5'
+'A5' 52 'A3'
+'N1' 127 'A1'
+'N3' 63 'A1'
+'A1' -38 'C2'
+'N2' -26 'C3'
+'C1' 85 'N3'
+'C5' -17 'A4'
+# Contingent Links
+'A1' 1 14 'C1'
+'A4' 1 14 'C4'
+'A5' 48 65 'C5'
+'A2' 52 55 'C2'
+'A3' 33 58 'C3'

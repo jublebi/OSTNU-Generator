@@ -18,6 +18,7 @@ import it.univr.di.labeledvalue.Constants;
 import it.univr.di.labeledvalue.Label;
 import it.univr.di.labeledvalue.lazy.LabeledLazyWeightTreeMap;
 import it.univr.di.labeledvalue.lazy.LazyWeight;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -145,6 +146,12 @@ public class LabeledLazyWeightEdge extends AbstractComponent {
 	@Override
 	public void clear() {
 		this.labeledValue.clear();
+	}
+
+	@NotNull
+	@Override
+	public String setName(@NotNull String newName) {
+		return null;
 	}
 
 	/**

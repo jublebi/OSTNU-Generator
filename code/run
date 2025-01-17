@@ -16,7 +16,7 @@ set -e
 PATH='/usr/lib/jvm/temurin-21-jdk-amd64/bin/':$PATH
 # $javac -version
 
-cp -v /tmp/pom.xml .
+cp -v ../environment/pom.xml .
 mvn package
 # 
 

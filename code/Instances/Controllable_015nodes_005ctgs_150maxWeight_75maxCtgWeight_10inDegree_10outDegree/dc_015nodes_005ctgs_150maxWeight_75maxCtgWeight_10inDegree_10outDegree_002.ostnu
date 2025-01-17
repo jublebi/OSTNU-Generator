@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns/graphml"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns/graphml">
+<key id="nObservedProposition" for="graph">
+<desc>Number of observed propositions in the graph</desc>
+<default>0</default>
+</key>
+<key id="NetworkType" for="graph">
+<desc>Network Type</desc>
+<default>CSTNU</default>
+</key>
+<key id="nEdges" for="graph">
+<desc>Number of edges in the graph</desc>
+<default>0</default>
+</key>
+<key id="nVertices" for="graph">
+<desc>Number of vertices in the graph</desc>
+<default>0</default>
+</key>
+<key id="Name" for="graph">
+<desc>Graph Name</desc>
+<default></default>
+</key>
+<key id="Obs" for="node">
+<desc>Proposition Observed. Value specification: [a-zA-F]</desc>
+<default></default>
+</key>
+<key id="x" for="node">
+<desc>The x coordinate for the visualization. A positive value.</desc>
+<default>0</default>
+</key>
+<key id="y" for="node">
+<desc>The y coordinate for the visualization. A positive value.</desc>
+<default>0</default>
+</key>
+<key id="Potential" for="node">
+<desc>Labeled Potential Values. Format: {[('node name (no case modification)', 'integer', 'label') ]+}|{}</desc>
+<default></default>
+</key>
+<key id="Type" for="edge">
+<desc>Type: Possible values: contingent|requirement|derived|internal.</desc>
+<default>requirement</default>
+</key>
+<key id="LowerCaseLabeledValues" for="edge">
+<desc>Labeled Lower-Case Values. Format: {[('node name (no case modification)', 'integer', 'label') ]+}|{}</desc>
+<default></default>
+</key>
+<key id="UpperCaseLabeledValues" for="edge">
+<desc>Labeled Upper-Case Values. Format: {[('node name (no case modification)', 'integer', 'label') ]+}|{}</desc>
+<default></default>
+</key>
+<key id="Value" for="edge">
+<desc>Value for STN edge. Format: 'integer'</desc>
+<default></default>
+</key>
+<key id="LabeledValue" for="edge">
+<desc>Case Value. Format: 'LC(NodeName):integer' or 'UC(NodeName):integer'</desc>
+<default></default>
+</key>
+<key id="LabeledValues" for="edge">
+<desc>Labeled Values. Format: {[('integer', 'label') ]+}|{}</desc>
+<default></default>
+</key>
+<graph edgedefault="directed">
+<data key="nObservedProposition">0</data>
+<data key="NetworkType">OSTNU</data>
+<data key="nEdges">39</data>
+<data key="nVertices">16</data>
+<data key="Name"></data>
+<node id="A1">
+<data key="x">150.0</data>
+<data key="y">30.0</data>
+</node>
+<node id="A3">
+<data key="x">300.0</data>
+<data key="y">330.0</data>
+</node>
+<node id="A5">
+<data key="x">300.0</data>
+<data key="y">630.0</data>
+</node>
+<node id="Z">
+<data key="x">0.0</data>
+<data key="y">0.0</data>
+</node>
+<node id="N2">
+<data key="x">150.0</data>
+<data key="y">330.0</data>
+</node>
+<node id="C3">
+<data key="x">450.0</data>
+<data key="y">330.0</data>
+</node>
+<node id="C1">
+<data key="x">300.0</data>
+<data key="y">30.0</data>
+</node>
+<node id="A2">
+<data key="x">300.0</data>
+<data key="y">180.0</data>
+</node>
+<node id="N3">
+<data key="x">150.0</data>
+<data key="y">480.0</data>
+</node>
+<node id="A4">
+<data key="x">300.0</data>
+<data key="y">480.0</data>
+</node>
+<node id="C4">
+<data key="x">450.0</data>
+<data key="y">480.0</data>
+</node>
+<node id="N4">
+<data key="x">150.0</data>
+<data key="y">630.0</data>
+</node>
+<node id="N1">
+<data key="x">150.0</data>
+<data key="y">180.0</data>
+</node>
+<node id="C2">
+<data key="x">450.0</data>
+<data key="y">180.0</data>
+</node>
+<node id="C5">
+<data key="x">450.0</data>
+<data key="y">630.0</data>
+</node>
+<node id="N5">
+<data key="x">150.0</data>
+<data key="y">780.0</data>
+</node>
+<edge id="C2-A1" source="C2" target="A1">
+<data key="Type">requirement</data>
+<data key="LabeledValues">{(123, ⊡) }</data>
+</edge>
+<edge id="A3-N1" source="A3" target="N1">
+<data key="Type">requirement</data>
+<data key="LabeledValues">{(-13, ⊡) }</data>
+</edge>
+<edge id="N3-N1" source="N3" target="N1">
+<data key="Type">requirement</data>
+<data key="LabeledValues">{(-19, ⊡) }</data>
+</edge>
+<edge id="A5-A1" source="A5" target="A1">
+<data key="Type">requirement</data>
+<data key="LabeledValues">{(64, ⊡) }</data>
+</edge>
+<edge id="eA1-C1" source="A1" target="C1">
+<data key="Type">contingent</data>
+<data key="LabeledValues">{(8, ⊡) }</data>
+</edge>
+<edge id="eA4-C4" source="A4" target="C4">
+<data key="Type">contingent</data>
+<data key="LabeledValues">{(75, ⊡) }</data>
+</edge>
+<edge id="A1-N5" source="A1" target="N5">
+<data key="Type">requirement</data>
+<data key="LabeledValues">{(88, ⊡) }</data>
+</edge>
+<edge id="A2-C5" source="A2" target="C5">
+<data key="Type">requirement</data>
+<data key="LabeledValues">{(-14, ⊡) }</data>
+</edge>
+<edge id="N5-C1" source="N5" target="C1">
+<data key="Type">requirement</data>
+<data key="LabeledValues">{(71, ⊡) }</data>
+</edge>
+<edge id="eC2-A2" source="C2" target="A2">
+<data key="Type">contingent</data>
+<data key="LabeledValues">{(-30, ⊡) }</data>
+</edge>
+<edge id="eC5-A5" source="C5" target="A5">
+<data key="Type">contingent</data>
+<data key="LabeledValues">{(-47, ⊡) }</data>
+</edge>
+<edge id="C4-A1" source="C4" target="A1">
+<data key="Type">requirement</data>
+<data key="LabeledValues">{(126, ⊡) }</data>
+</edge>
+<edge id="C4-A2" source="C4" target="A2">
+<data key="Type">requirement</data>
+<data key="LabeledValues">{(-3, ⊡) }</data>
+</edge>
+<edge id="N4-N2" source="N4" target="N2">
+<data key="Type">requirement</data>
+<data key="LabeledValues">{(147, ⊡) }</data>
+</edge>
+<edge id="N4-A1" source="N4" target="A1">
+<data key="Type">requirement</data>
+<data key="LabeledValues">{(36, ⊡) }</data>
+</edge>
+<edge id="C5-C1" source="C5" target="C1">
+<data key="Type">requirement</data>
+<data key="LabeledValues">{(-28, ⊡) }</data>
+</edge>
+<edge id="A5-C1" source="A5" target="C1">
+<data key="Type">requirement</data>
+<data key="LabeledValues">{(66, ⊡) }</data>
+</edge>
+<edge id="N5-A4" source="N5" target="A4">
+<data key="Type">requirement</data>
+<data key="LabeledValues">{(-19, ⊡) }</data>
+</edge>
+<edge id="N2-A1" source="N2" target="A1">
+<data key="Type">requirement</data>
+<data key="LabeledValues">{(-25, ⊡) }</data>
+</edge>
+<edge id="N1-N4" source="N1" target="N4">
+<data key="Type">requirement</data>
+<data key="LabeledValues">{(33, ⊡) }</data>
+</edge>
+<edge id="eA5-C5" source="A5" target="C5">
+<data key="Type">contingent</data>
+<data key="LabeledValues">{(65, ⊡) }</data>
+</edge>
+<edge id="eA2-C2" source="A2" target="C2">
+<data key="Type">contingent</data>
+<data key="LabeledValues">{(51, ⊡) }</data>
+</edge>
+<edge id="eC3-A3" source="C3" target="A3">
+<data key="Type">contingent</data>
+<data key="LabeledValues">{(-1, ⊡) }</data>
+</edge>
+<edge id="N4-N1" source="N4" target="N1">
+<data key="Type">requirement</data>
+<data key="LabeledValues">{(-5, ⊡) }</data>
+</edge>
+<edge id="A4-N1" source="A4" target="N1">
+<data key="Type">requirement</data>
+<data key="LabeledValues">{(15, ⊡) }</data>
+</edge>
+<edge id="N4-N5" source="N4" target="N5">
+<data key="Type">requirement</data>
+<data key="LabeledValues">{(27, ⊡) }</data>
+</edge>
+<edge id="eA3-C3" source="A3" target="C3">
+<data key="Type">contingent</data>
+<data key="LabeledValues">{(16, ⊡) }</data>
+</edge>
+<edge id="A5-A3" source="A5" target="A3">
+<data key="Type">requirement</data>
+<data key="LabeledValues">{(121, ⊡) }</data>
+</edge>
+<edge id="A4-N5" source="A4" target="N5">
+<data key="Type">requirement</data>
+<data key="LabeledValues">{(19, ⊡) }</data>
+</edge>
+<edge id="eC1-A1" source="C1" target="A1">
+<data key="Type">contingent</data>
+<data key="LabeledValues">{(-1, ⊡) }</data>
+</edge>
+<edge id="N3-A1" source="N3" target="A1">
+<data key="Type">requirement</data>
+<data key="LabeledValues">{(109, ⊡) }</data>
+</edge>
+<edge id="eC4-A4" source="C4" target="A4">
+<data key="Type">contingent</data>
+<data key="LabeledValues">{(-58, ⊡) }</data>
+</edge>
+<edge id="A4-C5" source="A4" target="C5">
+<data key="Type">requirement</data>
+<data key="LabeledValues">{(-2, ⊡) }</data>
+</edge>
+<edge id="C4-N4" source="C4" target="N4">
+<data key="Type">requirement</data>
+<data key="LabeledValues">{(118, ⊡) }</data>
+</edge>
+<edge id="C4-N2" source="C4" target="N2">
+<data key="Type">requirement</data>
+<data key="LabeledValues">{(51, ⊡) }</data>
+</edge>
+<edge id="A3-A1" source="A3" target="A1">
+<data key="Type">requirement</data>
+<data key="LabeledValues">{(145, ⊡) }</data>
+</edge>
+<edge id="N2-C2" source="N2" target="C2">
+<data key="Type">requirement</data>
+<data key="LabeledValues">{(35, ⊡) }</data>
+</edge>
+<edge id="N2-N4" source="N2" target="N4">
+<data key="Type">requirement</data>
+<data key="LabeledValues">{(87, ⊡) }</data>
+</edge>
+<edge id="C1-N4" source="C1" target="N4">
+<data key="Type">requirement</data>
+<data key="LabeledValues">{(70, ⊡) }</data>
+</edge>
+</graph>
+</graphml>

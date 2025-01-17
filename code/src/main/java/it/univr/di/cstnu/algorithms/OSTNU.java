@@ -873,16 +873,16 @@ public class OSTNU extends AbstractCSTN<OSTNUEdgePluggable> {
 						}
 					}
 					// In order to speed up the checking, prepare some auxiliary data structure
-					if (s.getName().length() != 1 || !Literal.check(s.getName().charAt(0))) {
-						final String msg =
-							"In this beta version of the program, a contingent node name must be sigle character in the range " +
-							Literal.PROPOSITION_RANGE +
-							" Current name is " + s.getName();
-						if (LOG.isLoggable(Level.SEVERE)) {
-							LOG.log(Level.SEVERE, msg);
-						}
-						throw new WellDefinitionException(msg);
-					}
+//					if (s.getName().length() != 1 || !Literal.check(s.getName().charAt(0))) {
+//						final String msg =
+//							"In this beta version of the program, a contingent node name must be sigle character in the range " +
+//							Literal.PROPOSITION_RANGE +
+//							" Current name is " + s.getName();
+//						if (LOG.isLoggable(Level.SEVERE)) {
+//							LOG.log(Level.SEVERE, msg);
+//						}
+//						throw new WellDefinitionException(msg);
+//					}
 
 					s.setALabel(sourceALabel);// s is the contingent node.
 					assert d != null;
@@ -894,16 +894,16 @@ public class OSTNU extends AbstractCSTN<OSTNUEdgePluggable> {
 					// eInverted : C--->A
 					assert d != null;
 					// In order to speed up the checking, prepare some auxiliary data structure
-					if (d.getName().length() != 1 || !Literal.check(d.getName().charAt(0))) {
-						final String msg =
-							"In this beta version of the program, a contingent node name must be sigle character in the range " +
-							Literal.PROPOSITION_RANGE +
-							" Current name is " + d.getName();
-						if (LOG.isLoggable(Level.SEVERE)) {
-							LOG.log(Level.SEVERE, msg);
-						}
-						throw new WellDefinitionException(msg);
-					}
+//					if (d.getName().length() != 1 || !Literal.check(d.getName().charAt(0))) {
+//						final String msg =
+//							"In this beta version of the program, a contingent node name must be sigle character in the range " +
+//							Literal.PROPOSITION_RANGE +
+//							" Current name is " + d.getName();
+//						if (LOG.isLoggable(Level.SEVERE)) {
+//							LOG.log(Level.SEVERE, msg);
+//						}
+//						throw new WellDefinitionException(msg);
+//					}
 
 					final ALabel destALabel = new ALabel(d.getName(), g.getALabelAlphabet());
 					if (!destALabel.equals(d.getALabel())) {

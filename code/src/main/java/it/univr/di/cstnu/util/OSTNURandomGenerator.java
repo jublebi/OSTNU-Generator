@@ -241,6 +241,68 @@ public class OSTNURandomGenerator {
 	}
 
 	/**
+	 * Neue Methode, die die gesamte Logik von main() kapselt.
+	 * @throws FileNotFoundException falls Dateien nicht gefunden werden.
+	 * @throws IOException falls es zu IO-Problemen kommt.
+	 */
+	public void generateInstancesWithOracle() throws IOException {
+		final OSTNURandomGenerator generator = new OSTNURandomGenerator();
+		System.out.println(generator.getVersionAndCopyright());
+
+		if (!generator.manageParameters(new String[]{})) {
+			return;
+		}
+
+		System.out.println("Starting execution...");
+
+		final String fileNamePrefix = generator.createFolders();
+		generator.createReadmeFiles();
+
+		final String numberFormat = makeNumberFormat(generator.dcInstances);
+
+		final TNGraphMLWriter stnuWriter = new TNGraphMLWriter(null);
+		ObjectPair<TNGraph<OSTNUEdgePluggable>> instances;
+
+		int notDCinstancesDone = 0;
+
+		for (int dcInstancesDone = 0; dcInstancesDone < generator.dcInstances; dcInstancesDone++) {
+
+			do {
+				instances = generator.buildAPairRndTNInstances(notDCinstancesDone < generator.notDCInstances);
+			} while (instances.getFirst() == null);
+
+			// DC-Instanz speichern
+			final String indexNumber = String.format(numberFormat, dcInstancesDone + generator.startingIndex);
+			String fileName = "dc" + fileNamePrefix + "_" + indexNumber + OSTNU_SUFFIX;
+			File outputFile = getNewFile(generator.dcSubDir, fileName);
+			stnuWriter.save(instances.getFirst(), outputFile);
+			System.out.println("DC instance " + fileName + " saved.");
+
+			// Plain-Format speichern
+			fileName = "dc" + fileNamePrefix + "_" + indexNumber + ".plainOStnu";
+			outputFile = getNewFile(generator.dcSubDir, fileName);
+			stnuPlainWriter(instances.getFirst(), outputFile);
+
+			if (generator.dense) {
+				final TNGraph<OSTNUEdgePluggable> denseInstance = generator.makeDenseInstance(instances.getFirst());
+				fileName = "dc" + fileNamePrefix + "_dense_" + indexNumber + OSTNU_SUFFIX;
+				outputFile = getNewFile(generator.dcSubDir, fileName);
+				stnuWriter.save(denseInstance, outputFile);
+				System.out.println("DC dense instance " + fileName + " saved.");
+			}
+
+			if (notDCinstancesDone < generator.notDCInstances) {
+				fileName = "notDC" + fileNamePrefix + "_" + indexNumber + OSTNU_SUFFIX;
+				outputFile = getNewFile(generator.notDCSubDir, fileName);
+				stnuWriter.save(instances.getSecond(), outputFile);
+				System.out.println("NOT DC instance " + fileName + " saved.");
+				notDCinstancesDone++;
+			}
+		}
+		System.out.println("Execution finished.");
+	}
+
+	/**
 	 * Adds 'edgesForNode' redundant edges having source 'node'. For determining the destination node, it makes 'hop' hops. If all the edges cannot be added
 	 * because already present, or it is not possible making them after 'hop' hops, it tries to add the remaining making fewer hops.
 	 *
@@ -620,6 +682,21 @@ public class OSTNURandomGenerator {
 		checkParameters();// it is necessary!
 	}
 
+	public OSTNURandomGenerator(
+			int givenDcInstances, int givenNotDCInstances, int nodes, int nCtgNodes1, double edgeProbability,
+			int givenMaxWeight, int givenMaxContingentWeight, int oracles) {
+		this();
+		dcInstances = givenDcInstances;
+		notDCInstances = givenNotDCInstances;
+		nNodes = nodes;
+		nCtgNodes = nCtgNodes1;
+		edgeProb = edgeProbability;
+		maxWeight = givenMaxWeight;
+		maxContingentWeight = givenMaxContingentWeight;
+		nOracles = oracles;
+		checkParameters();// it is necessary!
+	}
+
 	/**
 	 * It cannot be used outside.
 	 */
@@ -918,7 +995,7 @@ public class OSTNURandomGenerator {
 	 * @return a pair of DC and not DC of CSTN instances. If the first member is null, it means that a generic error in the building has occurred. If
 	 * 	alsoNotDcInstance is false, the returned not DC instance is null.
 	 */
-	private ObjectPair<TNGraph<OSTNUEdgePluggable>> buildAPairRndTNInstances(boolean alsoNotDcInstance) {
+	public ObjectPair<TNGraph<OSTNUEdgePluggable>> buildAPairRndTNInstances(boolean alsoNotDcInstance) {
 
 		LOG.info("Start building a new random instance");
 		final TNGraph<OSTNUEdgePluggable> randomGraph = new TNGraph<>("", EdgeSupplier.DEFAULT_OSTNU_EDGE_CLASS);
@@ -1147,7 +1224,7 @@ public class OSTNURandomGenerator {
 	 *
 	 * @throws IOException if any directory cannot be created or moved.
 	 */
-	private String createFolders() throws IOException {
+	public String createFolders() throws IOException {
 		final File baseDir = new File(baseDirName);
 
 		if (!baseDir.exists()) {
@@ -1207,7 +1284,7 @@ public class OSTNURandomGenerator {
 	 *
 	 * @throws IOException if any file cannot be created.
 	 */
-	private void createReadmeFiles(OSTNURandomGenerator this) throws IOException {
+	 public void createReadmeFiles(OSTNURandomGenerator this) throws IOException {
 		if (dcSubDir == null || notDCSubDir == null) {
 			return;
 		}
