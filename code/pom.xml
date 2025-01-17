@@ -249,7 +249,7 @@
 					<release>${java.version}</release>
 					<compilerArgs>
 						<!-- <arg>-proc:none</arg>-->
-						<arg>-sourcepath</arg><!-- passing a null sourcepath allows a better management of excludes/includes-->
+						<arg>-sourcepath</arg>
 						<arg>null</arg>
 						<arg>-Xlint:unchecked</arg>
 					</compilerArgs>
@@ -257,7 +257,7 @@
 					<showDeprecation>true</showDeprecation>
 					<showWarnings>true</showWarnings>
 					<fork>true</fork>
-					<executable>/usr/lib/jvm/temurin-21-jdk-amd64/bin/javac</executable>
+					<executable>/usr/local/openjdk-21/bin/javac</executable>
 					<excludes>
 						<exclude>**/lazy/*.java</exclude>
 					</excludes>
